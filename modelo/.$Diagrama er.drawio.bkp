@@ -1,6 +1,6 @@
 <mxfile host="Electron">
   <diagram name="Página-1" id="LOXfk6c3pCZjV9axBrne">
-    <mxGraphModel dx="4519" dy="1647" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="3373" dy="2157" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -401,6 +401,39 @@
               <mxPoint x="1980" y="229.9" />
             </Array>
           </mxGeometry>
+        </mxCell>
+        <mxCell id="aYIG3rHN7VYdJbceeKQQ-82" edge="1" parent="1" source="aYIG3rHN7VYdJbceeKQQ-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=ERone;endFill=0;startArrow=ERzeroToMany;startFill=0;" target="1v5WsWlLSOknXJOCMCRh-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aYIG3rHN7VYdJbceeKQQ-72" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Historia_Clinica" vertex="1">
+          <mxGeometry height="340" width="250" x="1038" y="-220" as="geometry" />
+        </mxCell>
+        <mxCell id="aYIG3rHN7VYdJbceeKQQ-73" parent="aYIG3rHN7VYdJbceeKQQ-72" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="# id_historia&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;* id_paciente&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;* sexo&lt;/div&gt;&lt;div&gt;* edad&lt;/div&gt;&lt;div&gt;* estado_civil&lt;/div&gt;&lt;div&gt;* religion&lt;/div&gt;&lt;div&gt;* ocupacion&lt;/div&gt;&lt;div&gt;* lugar_nacimiento&lt;/div&gt;&lt;div&gt;* lugar_residencia&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;* antecedentes_heredofamiliares&lt;/div&gt;&lt;div&gt;* antecedentes_personales_no_patologicos&lt;/div&gt;&lt;div&gt;o antecedentes_patologicos&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;* padecimiento_actual&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;o interrogatorio_aparatos_sistemas&lt;/div&gt;&lt;div&gt;o sintomas_generales_terapeutica&lt;/div&gt;&lt;div&gt;o estudios_previos&lt;/div&gt;" vertex="1">
+          <mxGeometry height="310" width="250" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="aYIG3rHN7VYdJbceeKQQ-78" edge="1" parent="1" source="aYIG3rHN7VYdJbceeKQQ-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=ERzeroToMany;startFill=0;endArrow=ERone;endFill=0;" target="aYIG3rHN7VYdJbceeKQQ-73">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aYIG3rHN7VYdJbceeKQQ-74" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Exploracion_Fisica" vertex="1">
+          <mxGeometry height="247.5" width="140" x="720" y="-158.75" as="geometry" />
+        </mxCell>
+        <mxCell id="aYIG3rHN7VYdJbceeKQQ-75" parent="aYIG3rHN7VYdJbceeKQQ-74" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="# id_exploracion&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;* id_historia&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;* signos_vitales&lt;/div&gt;&lt;div&gt;* exploracion_general&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;o cabeza&lt;/div&gt;&lt;div&gt;o cuello&amp;nbsp;&lt;/div&gt;&lt;div&gt;o torax&lt;/div&gt;&lt;div&gt;o abdomen&lt;/div&gt;&lt;div&gt;o extremidades&lt;/div&gt;&lt;div&gt;o columna_vertebral&lt;/div&gt;&lt;div&gt;o cavidades&lt;/div&gt;" vertex="1">
+          <mxGeometry height="217.5" width="140" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="aYIG3rHN7VYdJbceeKQQ-76" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d0cee2;strokeColor=#56517e;" value="Agendamiento_Quirurgico" vertex="1">
+          <mxGeometry height="240" width="140" x="1450" y="-170" as="geometry" />
+        </mxCell>
+        <mxCell id="aYIG3rHN7VYdJbceeKQQ-77" parent="aYIG3rHN7VYdJbceeKQQ-76" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="# id_agendamiento&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;* id_paciente&lt;/div&gt;&lt;div&gt;* id_historia&lt;/div&gt;&lt;div&gt;* id_medico_cirujano&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;* caracter&lt;/div&gt;&lt;div&gt;* tipo_procedimiento&lt;/div&gt;&lt;div&gt;* tiempo_estimado&lt;/div&gt;&lt;div&gt;* tipo_anestesia&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;* fecha_hora_solicitud&lt;/div&gt;&lt;div&gt;* estado&lt;/div&gt;&lt;div&gt;o motivo_rechazo&lt;/div&gt;" vertex="1">
+          <mxGeometry height="210" width="140" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="aYIG3rHN7VYdJbceeKQQ-79" edge="1" parent="1" source="aYIG3rHN7VYdJbceeKQQ-73" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=ERone;startFill=0;endArrow=ERzeroToMany;endFill=0;fillColor=#d0cee2;strokeColor=#56517e;" target="aYIG3rHN7VYdJbceeKQQ-77">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aYIG3rHN7VYdJbceeKQQ-80" edge="1" parent="1" source="aYIG3rHN7VYdJbceeKQQ-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.997;entryY=0.02;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;startArrow=ERzeroToMany;startFill=0;endArrow=ERone;endFill=0;fillColor=#d0cee2;strokeColor=#56517e;" target="1v5WsWlLSOknXJOCMCRh-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aYIG3rHN7VYdJbceeKQQ-81" edge="1" parent="1" source="aYIG3rHN7VYdJbceeKQQ-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.983;entryY=0.147;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=ERzeroToMany;startFill=0;endArrow=ERone;endFill=0;fillColor=#d0cee2;strokeColor=#56517e;" target="1v5WsWlLSOknXJOCMCRh-22">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
