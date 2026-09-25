@@ -1,5 +1,4 @@
 -- 04_ingreso_egreso.sql
--- Datos ficticios, sin tildes ni ñ, FK por subconsulta
 
 INSERT INTO ingreso (id_paciente, id_unidad_medica, id_servicio, id_medico, id_recurso, fecha_hora, motivo_ingreso, diagnostico_presuntivo) VALUES
 ((SELECT id_paciente FROM paciente WHERE no_expediente = 'EXP-0001'), (SELECT id_unidad_medica FROM unidad_medica WHERE tipo_unidad = 'Emergencias'), (SELECT id_servicio FROM servicio_unidad WHERE nombre = 'Unidad de Cuidado Critico de Adultos'), (SELECT id_medico FROM medico WHERE nombre = 'Dr. Alejandro Morales'), (SELECT id_recurso FROM recurso_asignable WHERE codigo = 'CML-QTZ-E01'), '2026-01-10 08:30:00', 'Dolor toracico intenso', 'Infarto agudo de miocardio'),

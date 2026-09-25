@@ -1,6 +1,5 @@
 -- 01_catalogos.sql
 -- DML de catalogo base
--- Datos ficticios, sin tildes ni ñ
 
 INSERT INTO hospital (nombre, direccion) VALUES
 ('Hospital Regional de Quetzaltenango', 'Avenida de los Cerezos 45, Zona 1'),

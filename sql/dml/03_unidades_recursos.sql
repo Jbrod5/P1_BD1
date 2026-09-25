@@ -1,6 +1,5 @@
 -- 03_unidades_recursos.sql
 -- DML de unidades, servicios, recursos y clinicas
--- Datos ficticios, sin tildes ni ñ
 
 INSERT INTO unidad_medica (id_hospital, tipo_unidad) VALUES
 ((SELECT id_hospital FROM hospital WHERE nombre = 'Hospital Regional de Quetzaltenango'), 'Consulta Externa'),

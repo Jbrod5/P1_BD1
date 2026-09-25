@@ -1,5 +1,4 @@
 -- 05_consulta_externa.sql
--- Datos ficticios, sin tildes ni ñ, FK por subconsulta
 
 INSERT INTO cita_programada (id_paciente, id_medico, id_clinica, fecha_hora, estado, referida_por_institucion, notificada_cancelacion) VALUES
 ((SELECT id_paciente FROM paciente WHERE no_expediente = 'EXP-0001'), (SELECT id_medico FROM medico WHERE nombre = 'Dr. Alejandro Morales'), (SELECT id_clinica FROM clinica WHERE numero_clinica = 'CL-01-QTZ'), '2026-01-20 09:00:00', 'Realizada', FALSE, NULL),

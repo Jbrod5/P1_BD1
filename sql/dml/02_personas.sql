@@ -1,5 +1,4 @@
 -- 02_personas.sql
--- Datos ficticios, sin tildes ni ñ, FK por subconsulta
 
 INSERT INTO encargado (nombre, parentesco, dpi, telefono, id_direccion) VALUES
 ('Jose Luis Rivera', 'Padre', '1112223334445', '56781234', (SELECT id_direccion FROM direccion WHERE municipio = 'Quetzaltenango' AND departamento = 'Quetzaltenango')),
