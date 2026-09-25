@@ -2,6 +2,7 @@
 -- DDL de fichas de ingreso, egreso y diagnosticos secundarios
 -- PostgreSQL 16+
 
+-- ficha de ingreso de pacientes, usada por todas las unidades excepto Consulta Externa
 CREATE TABLE ingreso (
     id_ingreso SERIAL PRIMARY KEY,
     id_paciente INTEGER NOT NULL REFERENCES paciente(id_paciente) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -13,8 +14,8 @@ CREATE TABLE ingreso (
     motivo_ingreso TEXT NOT NULL,
     diagnostico_presuntivo TEXT NOT NULL
 );
-COMMENT ON TABLE ingreso IS 'ficha de ingreso de pacientes, usada por todas las unidades excepto Consulta Externa';
 
+-- ficha de egreso, relacion uno a uno con su ingreso
 CREATE TABLE egreso (
     id_egreso SERIAL PRIMARY KEY,
     id_ingreso INTEGER NOT NULL UNIQUE REFERENCES ingreso(id_ingreso) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -35,11 +36,10 @@ CREATE TABLE egreso (
     -- Valida que el numero de dias hospitalizado no sea negativo
     CONSTRAINT chk_egreso_numero_dias_hospitalizado CHECK (numero_dias_hospitalizado >= 0)
 );
-COMMENT ON TABLE egreso IS 'ficha de egreso, relacion uno a uno con su ingreso';
 
+-- diagnosticos secundarios de un egreso, relacion uno a muchos
 CREATE TABLE diagnostico_secundario (
     id_diagnostico_secundario SERIAL PRIMARY KEY,
     id_egreso INTEGER NOT NULL REFERENCES egreso(id_egreso) ON DELETE CASCADE ON UPDATE CASCADE,
     descripcion TEXT NOT NULL
 );
-COMMENT ON TABLE diagnostico_secundario IS 'diagnosticos secundarios de un egreso, relacion uno a muchos';

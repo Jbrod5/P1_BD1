@@ -2,6 +2,7 @@
 -- DDL de etapas quirurgicas y registros de verificacion
 -- PostgreSQL 16+
 
+-- las 3 fases grandes del proceso quirurgico de una cirugia
 CREATE TABLE etapa_quirurgica (
     id_etapa SERIAL PRIMARY KEY,
     id_cirugia INTEGER NOT NULL REFERENCES cirugia(id_cirugia) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -11,8 +12,8 @@ CREATE TABLE etapa_quirurgica (
     -- Valida que el tipo de etapa sea Preoperatorio, Intraoperatorio o Postoperatorio
     CONSTRAINT chk_etapa_quirurgica_tipo_etapa CHECK (tipo_etapa IN ('Preoperatorio', 'Intraoperatorio', 'Postoperatorio'))
 );
-COMMENT ON TABLE etapa_quirurgica IS 'las 3 fases grandes del proceso quirurgico de una cirugia';
 
+-- puntos de verificacion dentro de cada etapa quirurgica
 CREATE TABLE registro_etapa (
     id_registro SERIAL PRIMARY KEY,
     id_etapa INTEGER NOT NULL REFERENCES etapa_quirurgica(id_etapa) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -26,4 +27,3 @@ CREATE TABLE registro_etapa (
     -- Valida que el resultado use una de las dos escalas del documento original segun la seccion
     CONSTRAINT chk_registro_etapa_resultado CHECK (resultado IN ('Aceptable', 'Medianamente aceptable', 'No aceptable', 'Exito', 'Fallo'))
 );
-COMMENT ON TABLE registro_etapa IS 'puntos de verificacion dentro de cada etapa quirurgica';

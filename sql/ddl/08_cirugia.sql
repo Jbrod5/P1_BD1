@@ -2,6 +2,7 @@
 -- DDL de cirugia, consentimiento informado y chequeo preanestesico
 -- PostgreSQL 16+
 
+-- cirugia realizada a partir de un agendamiento aprobado
 CREATE TABLE cirugia (
     id_cirugia SERIAL PRIMARY KEY,
     id_agendamiento INTEGER NOT NULL UNIQUE REFERENCES agendamiento_quirurgico(id_agendamiento) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -12,8 +13,8 @@ CREATE TABLE cirugia (
     fecha_hora_inicio TIMESTAMP NOT NULL,
     fecha_hora_fin TIMESTAMP
 );
-COMMENT ON TABLE cirugia IS 'cirugia realizada a partir de un agendamiento aprobado';
 
+-- consentimiento informado firmado previo a la cirugia
 CREATE TABLE consentimiento_informado (
     id_consentimiento SERIAL PRIMARY KEY,
     id_cirugia INTEGER NOT NULL REFERENCES cirugia(id_cirugia) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25,8 +26,8 @@ CREATE TABLE consentimiento_informado (
     firma_paciente_o_representante VARCHAR(150) NOT NULL,
     fecha DATE NOT NULL
 );
-COMMENT ON TABLE consentimiento_informado IS 'consentimiento informado firmado previo a la cirugia';
 
+-- chequeo preanestesico previo a la cirugia
 CREATE TABLE chequeo_preanestesico (
     id_chequeo SERIAL PRIMARY KEY,
     id_cirugia INTEGER NOT NULL REFERENCES cirugia(id_cirugia) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -35,4 +36,3 @@ CREATE TABLE chequeo_preanestesico (
     plan_anestesia TEXT NOT NULL,
     id_medico_anestesista INTEGER NOT NULL REFERENCES medico(id_medico) ON DELETE RESTRICT ON UPDATE CASCADE
 );
-COMMENT ON TABLE chequeo_preanestesico IS 'chequeo preanestesico previo a la cirugia';

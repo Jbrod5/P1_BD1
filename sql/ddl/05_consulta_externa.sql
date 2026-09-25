@@ -2,6 +2,7 @@
 -- DDL de citas, consultas, recetas y medicamentos de consulta externa
 -- PostgreSQL 16+
 
+-- citas programadas de consulta externa
 CREATE TABLE cita_programada (
     id_cita SERIAL PRIMARY KEY,
     id_paciente INTEGER NOT NULL REFERENCES paciente(id_paciente) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -14,8 +15,8 @@ CREATE TABLE cita_programada (
     -- Valida que el estado de la cita sea Programada, Realizada, Reprogramada o Cancelada
     CONSTRAINT chk_cita_programada_estado CHECK (estado IN ('Programada', 'Realizada', 'Reprogramada', 'Cancelada'))
 );
-COMMENT ON TABLE cita_programada IS 'citas programadas de consulta externa';
 
+-- ficha de consulta del paciente en consulta externa (id_clinica es independiente de id_cita: toda consulta ocurre en un consultorio, tenga o no cita previa)
 CREATE TABLE consulta (
     id_consulta SERIAL PRIMARY KEY,
     id_cita INTEGER REFERENCES cita_programada(id_cita) ON DELETE SET NULL ON UPDATE CASCADE,
@@ -31,8 +32,8 @@ CREATE TABLE consulta (
     -- Valida que el tipo de consulta sea Primera vez, Reconsulta o Referida
     CONSTRAINT chk_consulta_tipo_consulta CHECK (tipo_consulta IN ('Primera vez', 'Reconsulta', 'Referida'))
 );
-COMMENT ON TABLE consulta IS 'ficha de consulta del paciente en consulta externa (id_clinica es independiente de id_cita: toda consulta ocurre en un consultorio, tenga o no cita previa)';
 
+-- receta medica emitida en una consulta
 CREATE TABLE receta (
     id_receta SERIAL PRIMARY KEY,
     id_consulta INTEGER NOT NULL REFERENCES consulta(id_consulta) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -40,8 +41,8 @@ CREATE TABLE receta (
     proxima_cita_fecha DATE,
     id_clinica INTEGER REFERENCES clinica(id_clinica) ON DELETE SET NULL ON UPDATE CASCADE
 );
-COMMENT ON TABLE receta IS 'receta medica emitida en una consulta';
 
+-- medicamentos incluidos en una receta
 CREATE TABLE medicamento_recetado (
     id_item SERIAL PRIMARY KEY,
     id_receta INTEGER NOT NULL REFERENCES receta(id_receta) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -49,4 +50,3 @@ CREATE TABLE medicamento_recetado (
     dosis VARCHAR(100) NOT NULL,
     duracion VARCHAR(100) NOT NULL
 );
-COMMENT ON TABLE medicamento_recetado IS 'medicamentos incluidos en una receta';

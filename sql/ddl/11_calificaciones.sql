@@ -2,6 +2,7 @@
 -- DDL de calificaciones a hospitales, medicos, personal de apoyo y encargados
 -- PostgreSQL 16+
 
+-- calificaciones de hospitales, medicos, personal de apoyo y encargados
 CREATE TABLE calificacion (
     id_calificacion SERIAL PRIMARY KEY,
     id_hospital INTEGER REFERENCES hospital(id_hospital) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -16,4 +17,3 @@ CREATE TABLE calificacion (
     -- Valida que la calificacion sea de exactamente uno: hospital, medico, personal de apoyo o encargado
     CONSTRAINT chk_calificacion_exclusiva CHECK ((id_hospital IS NOT NULL)::int + (id_medico IS NOT NULL)::int + (id_personal_apoyo IS NOT NULL)::int + (id_encargado IS NOT NULL)::int = 1)
 );
-COMMENT ON TABLE calificacion IS 'calificaciones de hospitales, medicos, personal de apoyo y encargados';

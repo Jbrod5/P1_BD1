@@ -2,6 +2,7 @@
 -- DDL de insumos, instrumental, equipo y participantes de cirugia
 -- PostgreSQL 16+
 
+-- insumos consumidos en una cirugia
 CREATE TABLE cirugia_insumo (
     id_cirugia INTEGER NOT NULL REFERENCES cirugia(id_cirugia) ON DELETE CASCADE ON UPDATE CASCADE,
     id_insumo INTEGER NOT NULL REFERENCES insumo(id_insumo) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -10,22 +11,22 @@ CREATE TABLE cirugia_insumo (
     CONSTRAINT chk_cirugia_insumo_cantidad CHECK (cantidad > 0),
     PRIMARY KEY (id_cirugia, id_insumo)
 );
-COMMENT ON TABLE cirugia_insumo IS 'insumos consumidos en una cirugia';
 
+-- instrumental utilizado en una cirugia
 CREATE TABLE cirugia_instrumento (
     id_cirugia INTEGER NOT NULL REFERENCES cirugia(id_cirugia) ON DELETE CASCADE ON UPDATE CASCADE,
     id_instrumento INTEGER NOT NULL REFERENCES instrumento(id_instrumento) ON DELETE RESTRICT ON UPDATE CASCADE,
     PRIMARY KEY (id_cirugia, id_instrumento)
 );
-COMMENT ON TABLE cirugia_instrumento IS 'instrumental utilizado en una cirugia';
 
+-- equipo utilizado en una cirugia
 CREATE TABLE cirugia_equipo (
     id_cirugia INTEGER NOT NULL REFERENCES cirugia(id_cirugia) ON DELETE CASCADE ON UPDATE CASCADE,
     id_equipo INTEGER NOT NULL REFERENCES equipo(id_equipo) ON DELETE RESTRICT ON UPDATE CASCADE,
     PRIMARY KEY (id_cirugia, id_equipo)
 );
-COMMENT ON TABLE cirugia_equipo IS 'equipo utilizado en una cirugia';
 
+-- equipo humano que participa en una cirugia
 CREATE TABLE cirugia_participante (
     id_participacion SERIAL PRIMARY KEY,
     id_cirugia INTEGER NOT NULL REFERENCES cirugia(id_cirugia) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -37,4 +38,3 @@ CREATE TABLE cirugia_participante (
     -- Valida que el participante sea un medico O un personal de apoyo, nunca ambos ni ninguno
     CONSTRAINT chk_participante_exclusivo CHECK ((id_medico IS NOT NULL)::int + (id_personal_apoyo IS NOT NULL)::int = 1)
 );
-COMMENT ON TABLE cirugia_participante IS 'equipo humano que participa en una cirugia';

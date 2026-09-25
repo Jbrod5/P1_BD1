@@ -2,6 +2,7 @@
 -- DDL de historia clinica, exploracion fisica y agendamiento quirurgico
 -- PostgreSQL 16+
 
+-- historia clinica preoperatoria, interrogatorio directo o indirecto
 CREATE TABLE historia_clinica (
     id_historia SERIAL PRIMARY KEY,
     id_paciente INTEGER NOT NULL REFERENCES paciente(id_paciente) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -24,8 +25,8 @@ CREATE TABLE historia_clinica (
     -- Valida que la edad registrada no sea negativa
     CONSTRAINT chk_historia_clinica_edad CHECK (edad >= 0)
 );
-COMMENT ON TABLE historia_clinica IS 'historia clinica preoperatoria, interrogatorio directo o indirecto';
 
+-- exploracion fisica, relacion uno a uno con historia_clinica
 CREATE TABLE exploracion_fisica (
     id_exploracion SERIAL PRIMARY KEY,
     id_historia INTEGER NOT NULL UNIQUE REFERENCES historia_clinica(id_historia) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -39,8 +40,8 @@ CREATE TABLE exploracion_fisica (
     columna_vertebral TEXT,
     cavidades TEXT
 );
-COMMENT ON TABLE exploracion_fisica IS 'exploracion fisica, relacion uno a uno con historia_clinica';
 
+-- solicitud de agendamiento quirurgico enviada al comite medico
 CREATE TABLE agendamiento_quirurgico (
     id_agendamiento SERIAL PRIMARY KEY,
     id_paciente INTEGER NOT NULL REFERENCES paciente(id_paciente) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -61,4 +62,3 @@ CREATE TABLE agendamiento_quirurgico (
     -- Valida que si el estado es Rechazado, siempre exista un motivo
     CONSTRAINT chk_agendamiento_motivo_rechazo CHECK ((estado = 'Rechazado' AND motivo_rechazo IS NOT NULL) OR (estado <> 'Rechazado'))
 );
-COMMENT ON TABLE agendamiento_quirurgico IS 'solicitud de agendamiento quirurgico enviada al comite medico';

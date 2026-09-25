@@ -2,13 +2,14 @@
 -- DDL de tablas de catalogo base (sin llaves foraneas)
 -- PostgreSQL 16+
 
+-- catalogo de hospitales de la cadena Hospitales de Occidente
 CREATE TABLE hospital (
     id_hospital SERIAL PRIMARY KEY,
     nombre VARCHAR(150) NOT NULL,
     direccion VARCHAR(250) NOT NULL
 );
-COMMENT ON TABLE hospital IS 'catalogo de hospitales de la cadena Hospitales de Occidente';
 
+-- direcciones reutilizables para paciente, encargado y medico
 CREATE TABLE direccion (
     id_direccion SERIAL PRIMARY KEY,
     municipio VARCHAR(100) NOT NULL,
@@ -17,8 +18,8 @@ CREATE TABLE direccion (
     -- Valida que el area sea Urbana o Rural
     CONSTRAINT chk_direccion_area CHECK (area IN ('Urbana', 'Rural'))
 );
-COMMENT ON TABLE direccion IS 'direcciones reutilizables para paciente, encargado y medico';
 
+-- catalogo de especialidades medicas y quirurgicas
 CREATE TABLE especialidad (
     id_especialidad SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL UNIQUE,
@@ -26,8 +27,8 @@ CREATE TABLE especialidad (
     -- Valida que el area sea Consulta Externa, Cirugia o Ambas
     CONSTRAINT chk_especialidad_area CHECK (area IN ('Consulta Externa', 'Cirugia', 'Ambas'))
 );
-COMMENT ON TABLE especialidad IS 'catalogo de especialidades medicas y quirurgicas';
 
+-- personal de apoyo que interviene en cirugias, no contratado como medico
 CREATE TABLE personal_apoyo (
     id_personal SERIAL PRIMARY KEY,
     nombre VARCHAR(150) NOT NULL,
@@ -36,8 +37,8 @@ CREATE TABLE personal_apoyo (
     -- Valida que el tipo sea personal de apoyo permitido
     CONSTRAINT chk_personal_apoyo_tipo CHECK (tipo IN ('Practicante de Medicina', 'Enfermero Registrado', 'Practicante de Enfermeria'))
 );
-COMMENT ON TABLE personal_apoyo IS 'personal de apoyo que interviene en cirugias, no contratado como medico';
 
+-- catalogo de insumos consumibles usados en la institucion
 CREATE TABLE insumo (
     id_insumo SERIAL PRIMARY KEY,
     nombre VARCHAR(150) NOT NULL,
@@ -50,8 +51,8 @@ CREATE TABLE insumo (
     -- Valida que el costo unitario no sea negativo
     CONSTRAINT chk_insumo_costo_unitario CHECK (costo_unitario >= 0)
 );
-COMMENT ON TABLE insumo IS 'catalogo de insumos consumibles usados en la institucion';
 
+-- catalogo de instrumental quirurgico reutilizable
 CREATE TABLE instrumento (
     id_instrumento SERIAL PRIMARY KEY,
     nombre VARCHAR(150) NOT NULL,
@@ -63,8 +64,8 @@ CREATE TABLE instrumento (
     -- Valida que la funcion sea una de las funciones quirurgicas permitidas
     CONSTRAINT chk_instrumento_funcion CHECK (funcion IN ('Corte', 'Contencion', 'Hemostatica', 'Retractor', 'Accesorio', 'Implante', 'Otro'))
 );
-COMMENT ON TABLE instrumento IS 'catalogo de instrumental quirurgico reutilizable';
 
+-- catalogo de equipo medico/quirurgico
 CREATE TABLE equipo (
     id_equipo SERIAL PRIMARY KEY,
     nombre VARCHAR(150) NOT NULL,
@@ -76,4 +77,3 @@ CREATE TABLE equipo (
     -- Valida que la funcion del equipo sea una funcion clinica permitida
     CONSTRAINT chk_equipo_funcion CHECK (funcion IN ('Exploracion', 'Diagnostico', 'Tratamiento', 'Rehabilitacion', 'Otro'))
 );
-COMMENT ON TABLE equipo IS 'catalogo de equipo medico/quirurgico';
