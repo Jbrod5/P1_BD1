@@ -2,7 +2,7 @@
 CREATE ROLE auditor_lectura WITH LOGIN PASSWORD 'CambioClave2026Lectura';
 
 -- otorga conexion a la base de datos
-GRANT CONNECT ON DATABASE p1_bd1 TO auditor_lectura;
+GRANT CONNECT ON DATABASE Proyecto1_BD1 TO auditor_lectura;
 
 -- otorga uso del esquema public
 GRANT USAGE ON SCHEMA public TO auditor_lectura;
